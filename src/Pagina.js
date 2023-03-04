@@ -2,8 +2,11 @@ import styled from "styled-components"
 import logo from "./assets/logo.png"
 import Perguntas from "./Perguntas"
 import cards from "./cards"
+import { useState } from "react"
 
 export default function Pagina() {
+    const [finalizados, setFinalizados] = useState(0)
+    
     return (
         <Corpo>
             <Cabeçalho>
@@ -17,11 +20,13 @@ export default function Pagina() {
                     resposta={card.answer}
                     pergunta={card.question}
                     index={index}
+                    setFinalizados={setFinalizados}
+                    finalizados={finalizados}
                     key={card.question}
                 />
             )}
             <Rodapé>
-                <p>0/4 Texto Dinamico</p>
+                <p>{finalizados}/{cards.length} Texto Dinamico</p>
             </Rodapé>
         </Corpo>
     )
@@ -33,7 +38,7 @@ const Corpo = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-bottom:70px;
+    padding-bottom:80px;
 `
 
 const Cabeçalho = styled.header`

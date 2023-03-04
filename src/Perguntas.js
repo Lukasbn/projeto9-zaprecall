@@ -6,10 +6,9 @@ import iconeCerto from "./assets/icone_certo.png"
 import iconeErrado from "./assets/icone_erro.png"
 import iconeQuase from  "./assets/icone_quase.png"
 
-export default function Perguntas({pergunta, resposta , index}) {
+export default function Perguntas({pergunta, resposta , index, setFinalizados, finalizados}) {
     const [cardAtual, setCardAtual] = useState(1)
     const [respostas, setRespostas] = useState('')
-
     function proximaEtapa(){
         const proximo = cardAtual + 1 ;
         setCardAtual(proximo)
@@ -18,16 +17,22 @@ export default function Perguntas({pergunta, resposta , index}) {
     function errou(){
         setCardAtual(1);
         setRespostas('#FF3030')
+        const atualizar = finalizados +1
+        setFinalizados(atualizar)
     }
 
     function acertou(){
         setCardAtual(1);
         setRespostas('#2FBE34')
+        const atualizar = finalizados +1
+        setFinalizados(atualizar)
     }
 
     function porpouco(){
         setCardAtual(1);
         setRespostas('#FF922E')
+        const atualizar = finalizados +1
+        setFinalizados(atualizar)
     }
     const reavaliar2 = [respostas==="#2FBE34" ? <img src={iconeCerto} alt="Acertou" /> : <img src={iconeQuase} alt="Seguir" />]
 
@@ -81,7 +86,6 @@ const Questions = styled.div`
     .carta{
         margin-bottom: ${ props => props.cardAtual===3 ? '85px' : '25px'};
         position: relative;
-        background-color: blue;
     }
 
 
