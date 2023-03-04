@@ -34,38 +34,38 @@ export default function Perguntas({pergunta, resposta , index, setFinalizados, f
         const atualizar = finalizados +1
         setFinalizados(atualizar)
     }
-    const reavaliar2 = [respostas==="#2FBE34" ? <img src={iconeCerto} alt="Acertou" /> : <img src={iconeQuase} alt="Seguir" />]
+    const reavaliar2 = [respostas==="#2FBE34" ? <img data-test="zap-icon" src={iconeCerto} alt="Acertou" /> : <img data-test="partial-icon" src={iconeQuase} alt="Quase" />]
 
 
-    const reavaliar = [respostas==="#FF3030" ? <img src={iconeErrado} alt="Errou" /> : reavaliar2]
+    const reavaliar = [respostas==="#FF3030" ? <img data-test="no-icon" src={iconeErrado} alt="Errou" /> : reavaliar2]
    
-    const ternarioImagem = [respostas==="" ? <img onClick={proximaEtapa} src={seta} alt="Seguir" /> : reavaliar]
+    const ternarioImagem = [respostas==="" ? <img data-test="play-btn" onClick={proximaEtapa} src={seta} alt="Seguir" /> : reavaliar]
    
     return (
         <Questions cardAtual={cardAtual} respostas={respostas}>
-            <div className="carta">
+            <div data-test="flashcard" className="carta">
                 <div className="face1">
-                    <p>Pergunta {index + 1}</p>
+                    <p data-test="flashcard-text" >Pergunta {index + 1}</p>
                     {ternarioImagem}
                 </div>
 
                 <div className="face2">
-                    <p>{pergunta}</p>
-                    <img onClick={proximaEtapa} src={virar} alt="Seguir" />
+                    <p data-test="flashcard-text" >{pergunta}</p>
+                    <img data-test="turn-btn" onClick={proximaEtapa} src={virar} alt="Seguir" />
                 </div>
 
                 <div className="face3">
-                    <p>{resposta}</p>
+                    <p data-test="flashcard-text" >{resposta}</p>
                     <div className="botoes">
-                        <button onClick={errou} className="falha">
+                        <button data-test="no-btn" onClick={errou} className="falha">
                             Não lembrei
                         </button>
 
-                        <button onClick={porpouco} className="quase">
+                        <button data-test="partial-btn" onClick={porpouco} className="quase">
                             Quase não lembrei
                         </button>
 
-                        <button onClick={acertou} className="acerto">
+                        <button data-test="zap-btn" onClick={acertou} className="acerto">
                             Zap!
                         </button>
                     </div>
