@@ -26,7 +26,7 @@ export default function Pagina() {
                 />
             )}
             <Rodapé>
-                <p data-test="footer" >{finalizados}/{cards.length} Texto Dinamico</p>
+                <p data-test="footer" >{finalizados}/{cards.length} CONCLUÍDOS</p>
             </Rodapé>
         </Corpo>
     )
